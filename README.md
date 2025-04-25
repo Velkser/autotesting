@@ -44,17 +44,17 @@ The tests will automatically launch `LAKIOO Creator.exe`, simulate user interact
 
 ---
 
-# 📋 Test Scenario Example: test_create_new_project
+## 📋 Test Scenario Example: test_create_new_project
 
-## Test Name
+### Test Name
 
 Verification of New Project Creation with Lite License
 
-## Objective
+### Objective
 
 To verify that the project creation functionality in the application works correctly. The test ensures a new project is created with a unique name and a Lite license, and that the expected result is displayed on the screen.
 
-## Prerequisites
+### Prerequisites
 
 - The `lakioo` fixture is provided to the test. It handles the automatic opening and closing of the application.
 - **Manual launch of the application is NOT required.** If the application is already open before the test starts, it may cause a duplicate window, which could result in test failure.
@@ -64,7 +64,7 @@ To verify that the project creation functionality in the application works corre
 - The `generate_custom_string()` function is available and returns a unique string.
 - The `check_image_on_screen()` function is implemented and capable of accurately comparing the current screen with the reference image.
 
-## Test Steps
+### Test Steps
 
 1. **Click on the New Project button**
 
@@ -88,24 +88,24 @@ To verify that the project creation functionality in the application works corre
    - Use `check_image_on_screen('test_create_new_project/expected_res.png')` to compare the screen with the reference image.
    - Store the result in `res`.
 
-## Expected Result
+### Expected Result
 
 - The `res` variable should be `True`, indicating a successful project creation.
 - If `res` is `False`, the test fails with the message:
   > "Získaný výsledok nezodpovedá očakávanému výsledku"
 
-## Postconditions
+### Postconditions
 
 - A project with the generated name and Lite license is created in the application.
 - The UI displays the correct result matching `expected_res.png`.
 
-## Notes
+### Notes
 
 - Test stability depends on the accuracy of coordinate values in the `MMPL` constants.
 - UI layout changes or screen resolution/scaling issues may cause test failures.
 - It is advised to validate the `check_image_on_screen()` function under multiple environments.
 
-## Test Type
+### Test Type
 
 Positive, automated UI test
 
