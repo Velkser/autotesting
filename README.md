@@ -44,6 +44,74 @@ The tests will automatically launch `LAKIOO Creator.exe`, simulate user interact
 
 ---
 
+# 📋 Test Scenario Example: test_create_new_project
+
+## Test Name
+
+Verification of New Project Creation with Lite License
+
+## Objective
+
+To verify that the project creation functionality in the application works correctly. The test ensures a new project is created with a unique name and a Lite license, and that the expected result is displayed on the screen.
+
+## Prerequisites
+
+- The `lakioo` fixture is provided to the test. It handles the automatic opening and closing of the application.
+- **Manual launch of the application is NOT required.** If the application is already open before the test starts, it may cause a duplicate window, which could result in test failure.
+- The `pyautogui` library is properly configured and able to control UI interactions.
+- The `expected_res.png` file exists in the `test_create_new_project/` directory and contains the expected visual result.
+- Constants `MMPL.NEW_PROJECT`, `MMPL.LITE_LICENSE_LEVEL`, and `MMPL.ACCEPT_BTN` are defined and contain valid screen coordinates.
+- The `generate_custom_string()` function is available and returns a unique string.
+- The `check_image_on_screen()` function is implemented and capable of accurately comparing the current screen with the reference image.
+
+## Test Steps
+
+1. **Click on the New Project button**
+
+   - Use `pyautogui.click(*MMPL.NEW_PROJECT)` to open the project creation form.
+
+2. **Enter Project Name**
+
+   - Generate a unique name using `generate_custom_string()`.
+   - Input the name using `pyautogui.write(project_name)`.
+
+3. **Select Lite License Level**
+
+   - Click at the coordinates `MMPL.LITE_LICENSE_LEVEL` to choose the Lite license.
+
+4. **Confirm Project Creation**
+
+   - Click `MMPL.ACCEPT_BTN` to confirm and proceed with the project creation.
+
+5. **Verify Result**
+
+   - Use `check_image_on_screen('test_create_new_project/expected_res.png')` to compare the screen with the reference image.
+   - Store the result in `res`.
+
+## Expected Result
+
+- The `res` variable should be `True`, indicating a successful project creation.
+- If `res` is `False`, the test fails with the message:
+  > "Získaný výsledok nezodpovedá očakávanému výsledku"
+
+## Postconditions
+
+- A project with the generated name and Lite license is created in the application.
+- The UI displays the correct result matching `expected_res.png`.
+
+## Notes
+
+- Test stability depends on the accuracy of coordinate values in the `MMPL` constants.
+- UI layout changes or screen resolution/scaling issues may cause test failures.
+- It is advised to validate the `check_image_on_screen()` function under multiple environments.
+
+## Test Type
+
+Positive, automated UI test
+
+---
+
+
 ## 📁 Project Structure
 
 ```
